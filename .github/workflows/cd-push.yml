@@ -28,4 +28,4 @@ jobs:
           tags: |
             bigbluebutton/greenlight:master
             bigbluebutton/greenlight:latest
-          build-args: version_code=${{ github.sha }}
+          build-args: version_code=${{ github.sha::8 }}
