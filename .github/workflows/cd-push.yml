@@ -30,4 +30,4 @@ jobs:
           tags: |
             bigbluebutton/greenlight:master
             bigbluebutton/greenlight:latest
-          build-args: version_code=${{ SHORT_SHA }}
+          build-args: version_code=${SHORT_SHA}
