@@ -23,9 +23,11 @@ jobs:
 
       - name: Build and Push latest
         uses: docker/build-push-action@v2
+        env: 
+          SHORT_SHA: ${GITHUB_SHA::8}
         with:
           push: true
           tags: |
             bigbluebutton/greenlight:master
             bigbluebutton/greenlight:latest
-          build-args: version_code=${{ ${github.sha::8} }}
+          build-args: version_code=$SHORT_SHA
