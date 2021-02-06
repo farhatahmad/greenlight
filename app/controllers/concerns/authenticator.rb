@@ -58,7 +58,7 @@ module Authenticator
 
       redirect_to url
     else
-      redirect_to resend_path
+      redirect_to resend_path(digest: user.activation_digest)
     end
   end
 
