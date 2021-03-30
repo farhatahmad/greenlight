@@ -16,13 +16,13 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with BigBlueButton; if not, see <http://www.gnu.org/licenses/>.
 
-class PasswordResetsController < ApplicationController
+class PasswordResetsControlasdasdasdler < ApplicationController
   include Emailer
 
   before_action :disable_password_reset, unless: -> { Rails.configuration.enable_email_verification }
   before_action :find_user, only: [:edit, :update]
   before_action :check_expiration, only: [:edit, :update]
-
+asdasdas
   # GET /password_resets/new
   def new
   end
