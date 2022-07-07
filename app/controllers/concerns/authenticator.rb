@@ -50,7 +50,13 @@ module Authenticator
         dont_redirect_to.push(File.join(ENV['OAUTH2_REDIRECT'], "auth", "openid_connect", "callback"))
       end
 
-      url = if cookies[:return_to] && !dont_redirect_to.include?(cookies[:return_to])
+      valid_route = if ENV['SAFE_HOSTS'].present?
+                      URI.parse(cookies[:return_to]).host == ENV['SAFE_HOSTS']
+                    else
+                      true
+                    end
+
+      url = if cookies[:return_to] && valid_route && !dont_redirect_to.include?(cookies[:return_to])
         cookies[:return_to]
       elsif user.role.get_permission("can_create_rooms")
         user.main_room
