@@ -14,22 +14,12 @@
 // You should have received a copy of the GNU Lesser General Public License along
 // with Greenlight; if not, see <http://www.gnu.org/licenses/>.
 
-import React, {useCallback} from 'react';
-import { Card } from 'react-bootstrap';
-import PropTypes from 'prop-types';
-import {useNavigate} from "react-router-dom";
-export default function RaffleCard({ raffle }) {
-  const navigate = useNavigate();
-  const handleClick = useCallback(() => { navigate(`${raffle.id}`); }, ['123123123']);
+import { useQuery } from 'react-query';
+import axios from '../../../helpers/Axios';
 
-  return (
-    <Card id="room-card" className="h-100 card-shadow border-0">
-      <Card.Body className="pb-0" onClick={handleClick}>
-        <img src={raffle.url} height={500} width={500} />
-      </Card.Body>
-      <Card.Footer className="bg-white text-center">
-        <h2>{raffle.name}</h2>
-      </Card.Footer>
-    </Card>
+export default function useRaffle(id) {
+  return useQuery(
+    ['useRaffle', id],
+    () => axios.get(`/raffles/${id}.json`).then((resp) => resp.data.data),
   );
 }

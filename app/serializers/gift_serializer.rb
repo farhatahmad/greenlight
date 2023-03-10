@@ -16,32 +16,6 @@
 
 # frozen_string_literal: true
 
-module Api
-  module V1
-    class RafflesController < ApiController
-      skip_before_action :ensure_authenticated
-
-      # GET /api/v1/env
-      # Returns basic NON-CONFIDENTIAL information on the environment variables
-      def show
-        render_data data: Gift.find(params[:id]), status: :ok
-      end
-
-      def index
-        render_data data: Gift.where(ticket: nil), status: :ok
-      end
-
-      def update
-        ticket = Ticket.all.sample
-
-        ticket.update(drawn: true)
-
-        Gift.find(params[:id]).update(ticket: ticket.number)
-
-        render_data data: {
-          ticket: ticket.number
-        }, status: :ok
-      end
-    end
-  end
+class GiftSerializer < ApplicationSerializer
+  attributes :id, :name, :url, :ticket
 end

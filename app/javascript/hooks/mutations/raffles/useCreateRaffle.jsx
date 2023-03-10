@@ -26,7 +26,9 @@ export default function useCreateRaffle(ticket) {
     () => axios.patch(`/raffles/${ticket}.json`),
     {
       onSuccess: () => {
-        queryClient.invalidateQueries('useRaffles');
+        queryClient.refetchQueries('useRaffles');
+        queryClient.invalidateQueries(['useRaffle']);
+
       },
       onError: () => {
       },

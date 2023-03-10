@@ -82,7 +82,7 @@ Rails.application.routes.draw do
       resources :locales, only: %i[index show], param: :name
 
 
-      resources :raffles, only: [:index, :update]
+      resources :raffles, only: [:show, :index, :update]
       namespace :admin do
         resources :users, only: %i[update] do
           collection do

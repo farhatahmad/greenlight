@@ -3,6 +3,7 @@ class CreateGifts < ActiveRecord::Migration[7.0]
     create_table :gifts do |t|
       t.string :name, null: false
       t.integer :ticket
+      t.string :url
       t.timestamps
     end
 
