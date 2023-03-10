@@ -16,32 +16,21 @@
 
 # frozen_string_literal: true
 
-module Api
-  module V1
-    class RafflesController < ApiController
-      skip_before_action :ensure_authenticated
+require_relative 'task_helpers'
 
-      # GET /api/v1/env
-      # Returns basic NON-CONFIDENTIAL information on the environment variables
-      def index
-        render_data data: {
-          OPENID_CONNECT: ENV['OPENID_CONNECT_ISSUER'].present?,
-          HCAPTCHA_KEY: ENV.fetch('HCAPTCHA_SITE_KEY', nil),
-          VERSION_TAG: ENV.fetch('VERSION_TAG', '')
-        }, status: :ok
-      end
+namespace :tickets do
+  desc 'Checks that the application was configured correctly'
+  task create: :environment do
+    Ticket.destroy_all
 
-      def update
-        ticket = Ticket.all.sample
-
-        ticket.update(drawn: true)
-
-        Gift.find_by(name: params[:id]).update(ticket: ticket.number)
-
-        render_data data: {
-          ticket: ticket.number
-        }, status: :ok
-      end
+    [*141001..143000].each do |number|
+      Ticket.create(number: , drawn: false)
     end
+
+    exit 0
+  end
+
+  task gifts: :environment do
+
   end
 end
