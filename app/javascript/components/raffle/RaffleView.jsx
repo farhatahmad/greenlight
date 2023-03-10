@@ -31,11 +31,12 @@ export default function RaffleView() {
 
 
   return (
-    <Card id="room-card" className="h-100 card-shadow border-0 ms-auto me-auto" style={{ width: '650px'}} >
+    <Card id="room-card" className="h-100 card-shadow border-0 ms-auto me-auto" style={{ width: '700px'}} >
       <Card.Body className="pb-0"  >
         <div className="text-center">
-          <img src={raffle?.url}  style={{height: '40vh', position: 'absolute', right: '660px'}}/>
-          <img src='https://raw.githubusercontent.com/farhatahmad/greenlight/raffle/app/assets/images/raffle%20podium.png' style={{height: '60vh'}}/>
+          <div style={{ backgroundSize: 'cover',backgroundImage: 'url(https://raw.githubusercontent.com/farhatahmad/greenlight/raffle/app/assets/images/raffle%20podium.png)', height: '70vh'}}>
+            <img src={raffle?.url} style={{height: '40vh', maxWidth: '630px'}} className="mt-4"/>
+          </div>
           {
             drawing && (
               <svg version="1.1" id="L5" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px"

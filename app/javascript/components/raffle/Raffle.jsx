@@ -9,7 +9,11 @@ export default function Raffle() {
 
   return (
     <>
-      <img src="https://raw.githubusercontent.com/farhatahmad/greenlight/raffle/app/assets/images/Logo%20-%20Final-2.png" style={{ maxHeight: '100px'}}/>
+      <div className="text-center">
+        <img src="https://raw.githubusercontent.com/farhatahmad/greenlight/raffle/app/assets/images/Logo%20-%20Final-2.png" style={{ maxHeight: '200px'}}/>
+        <h1 className="text-brand mb-3">ABCCO Annual Fundraising Raffle</h1>
+      </div>
+
 
       <div>
         <Row className="g-4 mt-4">
