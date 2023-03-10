@@ -9,17 +9,20 @@ export default function Raffle() {
 
   return (
     <>
+      <img src="https://raw.githubusercontent.com/farhatahmad/greenlight/raffle/app/assets/images/Logo%20-%20Final-2.png" style={{ maxHeight: '100px'}}/>
 
+      <div>
+        <Row className="g-4 mt-4">
+          {
+            (raffles?.map((raffle) => (
+              <Col className="col-md-auto col-xs-12 mt-0 mb-4">
+                <RaffleCard raffle={raffle}/>
+              </Col>
+            )))
+          }
+        </Row>
+      </div>
 
-      <Row className="g-4 mt-4">
-        {
-          (raffles?.map((raffle) => (
-            <Col className="col-md-auto col-xs-12 mt-0 mb-4">
-              <RaffleCard raffle={raffle}/>
-            </Col>
-          )))
-        }
-      </Row>
 
     </>
   );
