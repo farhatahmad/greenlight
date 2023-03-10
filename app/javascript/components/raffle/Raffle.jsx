@@ -10,6 +10,7 @@ export default function Raffle() {
   return (
     <>
 
+
       <Row className="g-4 mt-4">
         {
           (raffles?.map((raffle) => (

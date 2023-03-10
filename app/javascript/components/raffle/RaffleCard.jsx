@@ -20,12 +20,12 @@ import PropTypes from 'prop-types';
 import {useNavigate} from "react-router-dom";
 export default function RaffleCard({ raffle }) {
   const navigate = useNavigate();
-  const handleClick = useCallback(() => { navigate(`${raffle.id}`); }, ['123123123']);
+  const handleClick = useCallback(() => { navigate(`${raffle.id}`); }, [raffle.id]);
 
   return (
-    <Card id="room-card" className="h-100 card-shadow border-0">
-      <Card.Body className="pb-0" onClick={handleClick}>
-        <img src={raffle.url} height={500} width={500} />
+    <Card id="room-card" className="h-100 card-shadow border-0" >
+      <Card.Body className="pb-0" onClick={handleClick} >
+        <img src={raffle.url} style={{maxHeight: '500px'}} width={500} />
       </Card.Body>
       <Card.Footer className="bg-white text-center">
         <h2>{raffle.name}</h2>
