@@ -14,18 +14,12 @@
 // You should have received a copy of the GNU Lesser General Public License along
 // with Greenlight; if not, see <http://www.gnu.org/licenses/>.
 
-import React from 'react';
-import { useTranslation } from 'react-i18next';
-import { Container } from 'react-bootstrap';
-import useEnv from '../../hooks/queries/env/useEnv';
-import useSiteSetting from '../../hooks/queries/site_settings/useSiteSetting';
+import { useQuery } from 'react-query';
+import axios from '../../../helpers/Axios';
 
-export default function Footer() {
-  const { t } = useTranslation();
-  const { data: env } = useEnv();
-  const { data: links } = useSiteSetting(['Terms', 'PrivacyPolicy']);
-
-  return (
-    <></>
+export default function useRaffles() {
+  return useQuery(
+    'useRaffles',
+    () => axios.get('/raffles.json').then((resp) => resp.data.data),
   );
 }

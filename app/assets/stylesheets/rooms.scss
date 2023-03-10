@@ -16,18 +16,18 @@
 
 #room-card {
   border: 2px solid transparent !important;
-  width: 305px;
+  width: 550px;
 
   @include media-breakpoint-down(xxl) {
-    width: 261px;
+    width: 550px;
   }
 
   @include media-breakpoint-down(xl) {
-    width: 216px;
+    width: 550px;
   }
 
   @include media-breakpoint-down(md) {
-    width: 245px;
+    width: 550px;
   }
 
   @include media-breakpoint-down(sm) {

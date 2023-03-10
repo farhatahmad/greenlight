@@ -81,6 +81,8 @@ Rails.application.routes.draw do
       resources :rooms_configurations, only: :index
       resources :locales, only: %i[index show], param: :name
 
+
+      resources :raffles, only: :index
       namespace :admin do
         resources :users, only: %i[update] do
           collection do

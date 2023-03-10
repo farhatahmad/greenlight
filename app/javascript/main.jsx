@@ -50,6 +50,8 @@ import AuthenticatedOnly from './routes/AuthenticatedOnly';
 import PendingRegistration from './components/users/registration/PendingRegistration';
 import RootBoundary from './RootBoundary';
 import Tenants from './components/admin/tenants/Tenants';
+import Raffle from "./components/raffle/Raffle";
+import RaffleView from "./components/raffle/RaffleView";
 
 const queryClientConfig = {
   defaultOptions: {
@@ -100,6 +102,8 @@ const router = createBrowserRouter(
       </Route>
 
       <Route path="/rooms/:friendlyId/join" element={<RoomJoin />} />
+      <Route path="/raffle" element={<Raffle />} />
+      <Route path="/raffle/:id" element={<RaffleView />} />
     </Route>,
   ),
 );

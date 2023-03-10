@@ -14,18 +14,22 @@
 // You should have received a copy of the GNU Lesser General Public License along
 // with Greenlight; if not, see <http://www.gnu.org/licenses/>.
 
-import React from 'react';
-import { useTranslation } from 'react-i18next';
-import { Container } from 'react-bootstrap';
-import useEnv from '../../hooks/queries/env/useEnv';
-import useSiteSetting from '../../hooks/queries/site_settings/useSiteSetting';
-
-export default function Footer() {
-  const { t } = useTranslation();
-  const { data: env } = useEnv();
-  const { data: links } = useSiteSetting(['Terms', 'PrivacyPolicy']);
+import React, {useCallback} from 'react';
+import { Card } from 'react-bootstrap';
+import PropTypes from 'prop-types';
+import {useNavigate} from "react-router-dom";
+export default function RaffleCard({ }) {
+  const navigate = useNavigate();
+  const handleClick = useCallback(() => { navigate('123123123'); }, ['123123123']);
 
   return (
-    <></>
+    <Card id="room-card" className="h-100 card-shadow border-0">
+      <Card.Body className="pb-0" onClick={handleClick}>
+        <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-mini-storage-select-202207-space-gray-wifi?wid=2560&hei=1440&fmt=p-jpg&qlt=95&.v=1670950638028" height={500} width={500} />
+      </Card.Body>
+      <Card.Footer className="bg-white text-center">
+        <h2>Ipad Mini</h2>
+      </Card.Footer>
+    </Card>
   );
 }

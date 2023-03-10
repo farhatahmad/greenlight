@@ -50,7 +50,7 @@ export default function App() {
   return (
     <>
       {(homePage || currentUser.signed_in) && <Header /> }
-      <Container className={pageHeight}>
+      <Container fluid className={pageHeight}>
         <Outlet />
       </Container>
       <ToastContainer
