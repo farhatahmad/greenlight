@@ -23,7 +23,19 @@ namespace :tickets do
   task create: :environment do
     Ticket.destroy_all
 
-    [*141001..143000].each do |number|
+    [*626001..627255].each do |number|
+      Ticket.create(number: , drawn: false)
+    end
+
+    [*579001..580201].each do |number|
+      Ticket.create(number: , drawn: false)
+    end
+
+    [*341001..342677].each do |number|
+      Ticket.create(number: , drawn: false)
+    end
+
+    [*191001..192204].each do |number|
       Ticket.create(number: , drawn: false)
     end
 

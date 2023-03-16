@@ -28,18 +28,26 @@ module Api
       end
 
       def index
-        render_data data: Gift.where(ticket: nil), status: :ok
+        render_data data: Gift.where(ticket: nil).order(:order), status: :ok
       end
 
       def update
-        ticket = Ticket.all.sample
+        gift = Gift.find(params[:id])
 
-        ticket.update(drawn: true)
+        if (gift.name == "Ziyara Arb3een Trip w/ 7amlet Al Wafaa")
+          @number = [*1..550].sample
+        else
+          ticket = Ticket.all.sample
 
-        Gift.find(params[:id]).update(ticket: ticket.number)
+          ticket.update(drawn: true)
+          @number = ticket.number
+        end
+
+        gift.update(ticket: @number)
+
 
         render_data data: {
-          ticket: ticket.number
+          ticket: @number
         }, status: :ok
       end
     end

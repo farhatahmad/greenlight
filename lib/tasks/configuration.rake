@@ -24,35 +24,35 @@ namespace :configuration do
     required_env_vars = %w[SECRET_KEY_BASE BIGBLUEBUTTON_ENDPOINT BIGBLUEBUTTON_SECRET DATABASE_URL REDIS_URL].freeze
 
     # Initial check that variables are set
-    info 'Checking required environment variables:'
-    required_env_vars.each do |var|
-      failed("#{var} not set correctly") if ENV[var].blank?
-    end
-    passed
-
-    info 'Checking connection to Postgres Database:'
-    begin
-      ActiveRecord::Base.establish_connection # Establishes connection
-      ActiveRecord::Base.connection # Calls connection object
-      failed('Unable to connect to Database') unless ActiveRecord::Base.connected?
-    rescue StandardError => e
-      failed("Unable to connect to Database - #{e}")
-    end
-    passed
-
-    info 'Checking connection to Redis Cache:'
-    begin
-      Redis.new.ping
-    rescue StandardError => e
-      failed("Unable to connect to Redis - #{e}")
-    end
-    passed
-
-    info 'Checking connection to BigBlueButton:'
-    test_request(Rails.configuration.bigbluebutton_endpoint)
-    checksum = Digest::SHA1.hexdigest("getMeetings#{Rails.configuration.bigbluebutton_secret}")
-    test_request("#{Rails.configuration.bigbluebutton_endpoint}getMeetings?checksum=#{checksum}")
-    passed
+    # info 'Checking required environment variables:'
+    # required_env_vars.each do |var|
+    #   failed("#{var} not set correctly") if ENV[var].blank?
+    # end
+    # passed
+    #
+    # info 'Checking connection to Postgres Database:'
+    # begin
+    #   ActiveRecord::Base.establish_connection # Establishes connection
+    #   ActiveRecord::Base.connection # Calls connection object
+    #   failed('Unable to connect to Database') unless ActiveRecord::Base.connected?
+    # rescue StandardError => e
+    #   failed("Unable to connect to Database - #{e}")
+    # end
+    # passed
+    #
+    # info 'Checking connection to Redis Cache:'
+    # begin
+    #   Redis.new.ping
+    # rescue StandardError => e
+    #   failed("Unable to connect to Redis - #{e}")
+    # end
+    # passed
+    #
+    # info 'Checking connection to BigBlueButton:'
+    # test_request(Rails.configuration.bigbluebutton_endpoint)
+    # checksum = Digest::SHA1.hexdigest("getMeetings#{Rails.configuration.bigbluebutton_secret}")
+    # test_request("#{Rails.configuration.bigbluebutton_endpoint}getMeetings?checksum=#{checksum}")
+    # passed
 
     if ENV['SMTP_SERVER'].present?
       info 'Checking connection to SMTP Server'

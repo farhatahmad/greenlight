@@ -24,8 +24,8 @@ export default function RaffleCard({ raffle }) {
 
   return (
     <Card id="room-card" className="h-100 card-shadow border-0" >
-      <Card.Body className="pb-0" onClick={handleClick} >
-        <img src={raffle.url} style={{maxHeight: '500px'}} width={500} />
+      <Card.Body className="pb-0 text-center" onClick={handleClick} >
+        <img src={raffle.url} style={{maxHeight: '500px', maxWidth: '500px'}} />
       </Card.Body>
       <Card.Footer className="bg-white text-center">
         <h2>{raffle.name}</h2>
